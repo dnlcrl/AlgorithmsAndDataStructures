@@ -30,88 +30,62 @@
  */ 
 
 
-
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.GraphicsEnvironment;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;        
 
-public class GUI2 {
+public class GUI1 {
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.
      */
-	private String fontFamilysString;
-	private int fontDimension;
-	private Color fontColor;
+	private JFrame frame;
 	
-	public GUI2(){
-		fontFamilysString = null;
-		fontDimension = 18;
-		fontColor = Color.black;
-		getFont();
+	public GUI1(){
 		createAndShowGUI();
 	}
 	
-	private int getNum(String s) {
-    	try {
-			return Integer.parseInt(s);
-		} catch (Exception e) {
-			return 0;
-		}
-	}
-	
-	private void getFont(){
-		int result = JOptionPane.DEFAULT_OPTION;
-		while (result != JOptionPane.OK_OPTION) {
-
-			JPanel myPanel = new JPanel();
-
-			String fonts[] = 
-					GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-			JComboBox fontBox = new JComboBox(fonts);
-			JTextField fontDimensionField = new JTextField(3);
-			JButton chooseButton = new JButton("Choose Color");
-			chooseButton.addActionListener((ActionListener) new ButtonListener());
-
-
-			myPanel.add(new JLabel("Font:"));
-			myPanel.add(fontBox);
-			myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-			myPanel.add(new JLabel("Dimension:"));
-			myPanel.add(fontDimensionField);
-			myPanel.add(chooseButton);
-
-
-			result = JOptionPane.showConfirmDialog(null, myPanel, 
-					"Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-			if (result == JOptionPane.OK_OPTION) {
-				int n = getNum(fontDimensionField.getText());
-				if (n != 0) fontDimension  = n;
-				fontFamilysString =  fonts[fontBox.getSelectedIndex()];
-			}	
-		}
-	}
-	
-	private class ButtonListener implements ActionListener {
+	private class Button3Listener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Color c = JColorChooser.showDialog(null, "Choose a Color", fontColor);
-			if (c != null)
-				fontColor = c;
+			frame.getContentPane().setBackground(Color.BLUE);
+		}
+	}
+	private class Button4Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			frame.getContentPane().setBackground(Color.GREEN);
+		}
+	}
+	private class Button5Listener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			frame.getContentPane().setBackground(Color.RED);
 		}
 	}
 	
     private void createAndShowGUI() {
-        final JFrame frame = new JFrame("ES2");
+        frame = new JFrame("ES1");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel label = new JLabel("ES2");
-        label.setFont(new Font(fontFamilysString, Font.PLAIN, fontDimension ));
-        label.setForeground(fontColor);
-        frame.getContentPane().add(label);
+        frame.setLayout(new GridLayout(2, 3));
+        JLabel label = new JLabel("Quanto fa 2+2?");
+        JButton Button3 = new JButton("3");
+        Button3.addActionListener((ActionListener) new Button3Listener());
+        JButton Button4 = new JButton("4");
+        Button4.addActionListener((ActionListener) new Button4Listener());
+        JButton Button5 = new JButton("5");
+        Button5.addActionListener((ActionListener) new Button5Listener());
+		
+		
+        frame.add(label);
+        frame.add(Box.createHorizontalStrut(15));
+        frame.add(Box.createHorizontalStrut(15));
+        frame.add(Button3);
+        frame.add(Button4);
+        frame.add(Button5);
+        frame.setPreferredSize(new Dimension(500, 500));
         frame.pack();
         frame.setVisible(true);
     }
