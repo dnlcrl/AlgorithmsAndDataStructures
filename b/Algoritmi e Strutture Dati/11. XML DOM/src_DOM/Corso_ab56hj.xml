@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<corso codice="ab56hj">
+    <nome>ProgettoINFIII</nome>
+    <descrizione>
+        <obiettivi>
+            <!--Obiettivi formativi del corso-->
+        </obiettivi>
+        <esame>
+            <!--Modalità di esame-->
+        </esame>
+    </descrizione>
+    <sillabo/>
+    <docenti>
+        <docente rif="IDdocente">
+            <nome>
+                <!--Nome del docente-->
+            </nome>
+            <cognome>
+                <!--Cognome del docente-->
+            </cognome>
+        </docente>
+    </docenti>
+    <testi>
+        <testo>
+            <autore>
+                <!--Autore del testo-->
+            </autore>
+            <titolo>
+                <!--Titolo del testo-->
+            </titolo>
+            <editore>
+                <!--Editore del testo-->
+            </editore>
+        </testo>
+    </testi>
+    <erogazione>
+        <crediti numero="0" tipologia="A"/>
+        <crediti numero="0" tipologia="B"/>
+        <periodo>
+            <!--Quadrimestre o semestre di erogazione-->
+        </periodo>
+        <cdl>
+            <!--Nome del corso di laurea-->
+        </cdl>
+        <anno>
+            <!--Anno di corso-->
+        </anno>
+    </erogazione>
+</corso>
